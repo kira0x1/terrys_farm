@@ -4,7 +4,7 @@
     {
       "__guid": "f2d9e80f-8ef4-43fb-a5bf-e5889a7dcc88",
       "Name": "Main Camera",
-      "Position": "-148.5359,40.40047,419.2832",
+      "Position": "-32,40.40047,419.2832",
       "Rotation": "0,0.7071068,0,0.7071068",
       "Enabled": true,
       "NetworkMode": 2,
@@ -113,7 +113,7 @@
     {
       "__guid": "dde7c045-8ab1-45a1-9a24-90f175d31afc",
       "Name": "3x3 Plot",
-      "Position": "112,-144,15.98954",
+      "Tags": "plot",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
@@ -227,6 +227,40 @@
           "PlotY": 3
         }
       ]
+    },
+    {
+      "__guid": "e36c9763-2c18-446b-9c3f-a23fb9d61241",
+      "Name": "Player",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Kira.Player",
+          "__guid": "7610daec-af98-4a57-ae33-4c280712ce9a"
+        }
+      ]
+    },
+    {
+      "__guid": "52ac379f-a547-4f41-936e-3d112ffd202d",
+      "Name": "Screen - UI",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "ee576e6e-13e9-410a-a3c1-1e7b6b885154",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "PlayerUI",
+          "__guid": "15bd2197-2813-4f58-a349-8b1210ac1557"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -252,7 +286,7 @@
   },
   "Title": "farm",
   "Description": "",
-  "LastSaved": "2024-05-02T13:20:22.7918898\u002B01:00",
+  "LastSaved": "2024-05-02T13:51:05.7461647\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
