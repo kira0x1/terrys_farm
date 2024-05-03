@@ -21,18 +21,6 @@ public partial class CategoryData : GameResource
 
     [Property]
     public List<CategoryItem> Items = new List<CategoryItem>();
-
-    // Access these statically with Clothing.All
-    public static IReadOnlyList<CategoryData> All => _all;
-    private static readonly List<CategoryData> _all = new();
-
-    protected override void PostLoad()
-    {
-        base.PostLoad();
-
-        if (!_all.Contains(this))
-            _all.Add(this);
-    }
 }
 
 public class CategoryItem

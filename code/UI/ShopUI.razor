@@ -7,7 +7,7 @@
 <root>
     <div class="sidebar">
 
-        @foreach (CategoryData c in CategoryDatas)
+        @foreach (CategoryData c in Categories)
         {
             var cname = "slot";
 
@@ -24,18 +24,17 @@
 
     <div class="container">
         @{
-            CategoryData categorySelected = CategoryDatas.Single(c => c.CategoryType == CategorySelected);
+            CategoryData categorySelected = Categories.Single(c => c.CategoryType == CategorySelected);
             for (var i = 0; i < categorySelected.Items.Count; i++)
             {
                 var cname = "slot";
 
-                if (HasItemSelected && ItemSelected == i)
+                if (HasItemSelected && ItemSelectedId == i)
                 {
                     cname += " active";
                 }
 
                 CategoryItem item = categorySelected.Items[i];
-
 
                 int i1 = i;
                 <div class=@cname onclick="@(() => OnItemClicked(i1))">
@@ -58,18 +57,19 @@
 
     private void OnItemClicked(int i)
     {
-        ItemSelected = i;
+        ItemSelectedId = i;
         HasItemSelected = true;
     }
 
     private bool HasItemSelected { get; set; } = false;
-    private int ItemSelected { get; set; } = 0;
-    private IReadOnlyList<CategoryData> CategoryDatas { get; set; } = CategoryData.All;
-    private CategoryTypes CategorySelected { get; set; }
+    private int ItemSelectedId { get; set; } = 0;
+    [Property] public List<CategoryData> Categories = new List<CategoryData>();
+    public CategoryItem ItemSelected => Categories.Single(c => c.CategoryType == CategorySelected).Items[ItemSelectedId];
+    private CategoryTypes CategorySelected { get; set; } = CategoryTypes.Seeds;
 
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(CategorySelected, HasItemSelected, ItemSelected);
+    protected override int BuildHash() => System.HashCode.Combine(CategorySelected, HasItemSelected, ItemSelectedId);
 
 }

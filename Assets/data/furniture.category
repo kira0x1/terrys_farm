@@ -1,6 +1,6 @@
 {
-  "Name": "Seed",
-  "Icon": "chair",
+  "Name": "Furniture",
+  "Icon": "chair ",
   "CategoryType": "Furniture",
   "ResourceVersion": 0,
   "__version": 0,
