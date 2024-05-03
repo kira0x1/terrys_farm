@@ -4,7 +4,7 @@
     {
       "__guid": "f2d9e80f-8ef4-43fb-a5bf-e5889a7dcc88",
       "Name": "Main Camera",
-      "Position": "-32,40.40047,419.2832",
+      "Position": "0,0,325.7826",
       "Rotation": "0,0.7071068,0,0.7071068",
       "Enabled": true,
       "NetworkMode": 2,
@@ -18,7 +18,7 @@
           "FieldOfView": 60,
           "IsMainCamera": true,
           "Orthographic": true,
-          "OrthographicHeight": 665.5976,
+          "OrthographicHeight": 749.2971,
           "Priority": 1,
           "RenderExcludeTags": "",
           "RenderTags": "",
@@ -89,7 +89,7 @@
               0
             ],
             "MaterialIndex": [
-              0
+              2
             ],
             "EdgeFlags": [
               0,
@@ -102,11 +102,13 @@
               0
             ],
             "Materials": [
-              "materials/dev/reflectivity_30.vmat"
+              "materials/dev/reflectivity_30.vmat",
+              "materials/dev/simple/simple_tile.vmat",
+              "materials/floor.vmat"
             ]
           },
           "SmoothingAngle": 40,
-          "Static": false
+          "Static": true
         }
       ]
     },
@@ -218,7 +220,7 @@
             ]
           },
           "SmoothingAngle": 40,
-          "Static": false
+          "Static": true
         },
         {
           "__type": "Kira.Plot",
@@ -286,7 +288,7 @@
   },
   "Title": "farm",
   "Description": "",
-  "LastSaved": "2024-05-02T13:51:05.7461647\u002B01:00",
+  "LastSaved": "2024-05-03T16:13:31.7108381\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
