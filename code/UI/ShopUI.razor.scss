@@ -22,25 +22,37 @@ ShopUI {
   .sidebar {
     left: 0;
     height: 100%;
-    width: 120px;
+    width: 100px;
     border: 6px #aaa;
     background-color: #aaa;
     border-radius: 4px 0 0 4px;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: nowrap;
     overflow: scroll;
+    padding-bottom: 10px;
 
     .slot {
+      justify-content: center;
+      align-items: center;
+      font-size: 30%;
+      color: #fff;
+      background-color: #8a8a8a;
       flex-shrink: 0;
-      background-color: #fff;
+      flex-grow: 0;
       width: 100%;
-      height: 80px;
+      height: 60px;
       border-radius: 2px;
 
       &:hover {
-        background-color: red;
+        background-color: #fff;
+        color: #aaa;
       }
+    }
+
+    .slot.active {
+      background-color: #33c5ff;
+      color: #fff;
     }
   }
 

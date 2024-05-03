@@ -1,14 +1,24 @@
+@using System
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
 
 <root>
     <div class="sidebar">
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
+
+        @foreach (Category c in Categories)
+        {
+            var cname = "slot";
+
+            if (CategorySelected == c.category)
+            {
+                cname += " active";
+            }
+
+            <div class=@cname onclick="@(() => OnSlotClicked(c.category))">
+                <i>@c.icon</i>
+            </div>
+        }
     </div>
 
     <div class="container">
@@ -19,8 +29,45 @@
 {
     public int Slots = 0;
 
+    public enum CategoryTypes
+    {
+        Seeds,
+        Furniture,
+        Animals
+    }
+
+    private void OnSlotClicked(CategoryTypes category)
+    {
+        CategorySelected = category;
+    }
+
+    public struct Category
+    {
+        public CategoryTypes category;
+        public string icon;
+
+        public Category(CategoryTypes category, string icon)
+        {
+            this.category = category;
+            this.icon = icon;
+        }
+    }
+
+    public CategoryTypes CategorySelected { get; set; }
+
+    public List<Category> Categories { get; set; } = new List<Category>()
+    {
+        new Category(CategoryTypes.Seeds,
+            "volunteer_activism"),
+        new Category(CategoryTypes.Furniture,
+            "chair"),
+        new Category(CategoryTypes.Animals,
+            "pets")
+    };
+
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(Slots);
+    protected override int BuildHash() => System.HashCode.Combine(CategorySelected);
+
 }
