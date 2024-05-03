@@ -1,5 +1,7 @@
 ﻿namespace Kira;
 
+using System;
+
 public enum CategoryTypes
 {
     Seeds,
@@ -7,20 +9,12 @@ public enum CategoryTypes
     Animals
 }
 
-[GameResource("Category Data", "category", "Category of items")]
-public partial class CategoryData : GameResource
+public class CategoryData
 {
-    [Property]
-    public string Name { get; set; } = "Seed";
-
-    [Property]
-    public string Icon { get; set; } = "favorite";
-
-    [Property]
+    public string Name { get; set; }
     public CategoryTypes CategoryType { get; set; }
-
-    [Property]
-    public List<CategoryItem> Items = new List<CategoryItem>();
+    public string Icon { get; set; }
+    public CategoryItem[] Items { get; set; }
 }
 
 public class CategoryItem

@@ -1,9 +1,9 @@
 namespace Kira;
 
-using Sandbox;
 using Sandbox.UI;
+using Component = Component;
 
-public sealed class Player : Component
+public sealed class Player : Component, Component.ExecuteInEditor
 {
     private ShopUI shopUI;
 

@@ -25,7 +25,7 @@
     <div class="container">
         @{
             CategoryData categorySelected = Categories.Single(c => c.CategoryType == CategorySelected);
-            for (var i = 0; i < categorySelected.Items.Count; i++)
+            for (var i = 0; i < categorySelected.Items.Length; i++)
             {
                 var cname = "slot";
 
@@ -55,6 +55,14 @@
         CategorySelected = category;
     }
 
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        var data = Util.LoadCategories();
+        Categories = data;
+    }
+
     private void OnItemClicked(int i)
     {
         ItemSelectedId = i;
@@ -63,7 +71,7 @@
 
     private bool HasItemSelected { get; set; } = false;
     private int ItemSelectedId { get; set; } = 0;
-    [Property] public List<CategoryData> Categories = new List<CategoryData>();
+    [Property] public CategoryData[] Categories;
     public CategoryItem ItemSelected => Categories.Single(c => c.CategoryType == CategorySelected).Items[ItemSelectedId];
     private CategoryTypes CategorySelected { get; set; } = CategoryTypes.Seeds;
 
