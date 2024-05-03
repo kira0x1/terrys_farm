@@ -25,9 +25,20 @@
     <div class="container">
         @{
             CategoryData categorySelected = CategoryDatas.Single(c => c.CategoryType == CategorySelected);
-            foreach (CategoryItem item in categorySelected.Items)
+            for (var i = 0; i < categorySelected.Items.Count; i++)
             {
-                <div class="slot">
+                var cname = "slot";
+
+                if (HasItemSelected && ItemSelected == i)
+                {
+                    cname += " active";
+                }
+
+                CategoryItem item = categorySelected.Items[i];
+
+
+                int i1 = i;
+                <div class=@cname onclick="@(() => OnItemClicked(i1))">
                     <i>@item.Icon</i>
                 </div>
             }
@@ -41,38 +52,24 @@
 
     private void OnSlotClicked(CategoryTypes category)
     {
+        HasItemSelected = false;
         CategorySelected = category;
     }
 
-    public struct Category
+    private void OnItemClicked(int i)
     {
-        public CategoryTypes category;
-        public string icon;
-
-        public Category(CategoryTypes category, string icon)
-        {
-            this.category = category;
-            this.icon = icon;
-        }
+        ItemSelected = i;
+        HasItemSelected = true;
     }
 
+    private bool HasItemSelected { get; set; } = false;
+    private int ItemSelected { get; set; } = 0;
     private IReadOnlyList<CategoryData> CategoryDatas { get; set; } = CategoryData.All;
-
     private CategoryTypes CategorySelected { get; set; }
-
-    private List<Category> Categories { get; } = new List<Category>()
-    {
-        new Category(CategoryTypes.Seeds,
-            "volunteer_activism"),
-        new Category(CategoryTypes.Furniture,
-            "chair"),
-        new Category(CategoryTypes.Animals,
-            "pets")
-    };
 
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(CategorySelected);
+    protected override int BuildHash() => System.HashCode.Combine(CategorySelected, HasItemSelected, ItemSelected);
 
 }
