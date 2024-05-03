@@ -261,6 +261,10 @@
         {
           "__type": "PlayerUI",
           "__guid": "15bd2197-2813-4f58-a349-8b1210ac1557"
+        },
+        {
+          "__type": "ShopUI",
+          "__guid": "4b6e172c-d2d1-4792-ad00-22870a2bf4a7"
         }
       ]
     }
@@ -288,7 +292,7 @@
   },
   "Title": "farm",
   "Description": "",
-  "LastSaved": "2024-05-03T16:13:31.7108381\u002B01:00",
+  "LastSaved": "2024-05-03T18:13:13.103316\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

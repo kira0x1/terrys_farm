@@ -1,0 +1,8 @@
+{
+  "Name": "Seed",
+  "Icon": "chair",
+  "CategoryType": "Furniture",
+  "ResourceVersion": 0,
+  "__version": 0,
+  "__references": []
+}

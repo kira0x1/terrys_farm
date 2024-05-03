@@ -1,4 +1,5 @@
 namespace Kira;
+
 using Sandbox;
 
 public sealed class Player : Component

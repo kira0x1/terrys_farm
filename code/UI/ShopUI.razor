@@ -1,4 +1,5 @@
 @using System
+@using Kira
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
@@ -6,35 +7,37 @@
 <root>
     <div class="sidebar">
 
-        @foreach (Category c in Categories)
+        @foreach (CategoryData c in CategoryDatas)
         {
             var cname = "slot";
 
-            if (CategorySelected == c.category)
+            if (CategorySelected == c.CategoryType)
             {
                 cname += " active";
             }
 
-            <div class=@cname onclick="@(() => OnSlotClicked(c.category))">
-                <i>@c.icon</i>
+            <div class=@cname onclick="@(() => OnSlotClicked(c.CategoryType))">
+                <i>@c.Icon</i>
             </div>
         }
     </div>
 
     <div class="container">
+        @{
+            CategoryData categorySelected = CategoryDatas.Single(c => c.CategoryType == CategorySelected);
+            foreach (CategoryItem item in categorySelected.Items)
+            {
+                <div class="slot">
+                    <i>@item.Icon</i>
+                </div>
+            }
+        }
     </div>
 </root>
 
 @code
 {
     public int Slots = 0;
-
-    public enum CategoryTypes
-    {
-        Seeds,
-        Furniture,
-        Animals
-    }
 
     private void OnSlotClicked(CategoryTypes category)
     {
@@ -53,9 +56,11 @@
         }
     }
 
-    public CategoryTypes CategorySelected { get; set; }
+    private IReadOnlyList<CategoryData> CategoryDatas { get; set; } = CategoryData.All;
 
-    public List<Category> Categories { get; set; } = new List<Category>()
+    private CategoryTypes CategorySelected { get; set; }
+
+    private List<Category> Categories { get; } = new List<Category>()
     {
         new Category(CategoryTypes.Seeds,
             "volunteer_activism"),
