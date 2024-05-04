@@ -1,6 +1,56 @@
+@using Kira
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
 
 <root>
+    <div class="toolbar">
+        <div class="container">
+
+            @for (var i = 0; i < Tools.Length; i++)
+            {
+                ToolData tool = Tools[i];
+                var cname = "slot";
+
+                if (HasToolSelected && ToolSelected == i)
+                {
+                    cname += " active";
+                }
+
+
+                int i1 = i;
+                <div class=@cname onclick="@(() => OnToolClicked(i1))">
+                    <i>@tool.Icon</i>
+                </div>
+            }
+
+        </div>
+    </div>
 </root>
+
+@code
+{
+    public int ToolSelected { get; set; } = 0;
+    public bool HasToolSelected { get; set; } = false;
+
+    private ToolData[] Tools { get; set; }
+
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        var data = Util.LoadToolData();
+        Tools = data;
+    }
+
+    /// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine(ToolSelected, HasToolSelected);
+
+    private void OnToolClicked(int i)
+    {
+        ToolSelected = i;
+        HasToolSelected = true;
+    }
+}

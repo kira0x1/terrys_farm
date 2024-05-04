@@ -22,7 +22,8 @@ public sealed class Player : Component, Component.ExecuteInEditor
         if (trace.Hit)
         {
             var endpos = trace.EndPosition.SnapToGrid(32f);
-            Gizmo.Draw.LineSphere(endpos, 10f);
+            var box = BBox.FromPositionAndSize(endpos.WithZ(20f), 14f);
+            Gizmo.Draw.SolidBox(box);
         }
     }
 }

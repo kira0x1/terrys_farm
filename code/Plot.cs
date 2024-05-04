@@ -1,4 +1,5 @@
 namespace Kira;
+
 using Sandbox;
 
 public sealed class Plot : Component
@@ -11,32 +12,26 @@ public sealed class Plot : Component
 
     protected override void OnUpdate()
     {
-        var startPos = Transform.Position;
-
-        var startX = startPos.x + PlotX * 16;
-        var endX = startPos.x - PlotX * 16;
-
-        var startY = startPos.y;
-
-        var lineLeft = startPos.WithY((startY + 1f) * 48f);
-        var lineRight = startPos.WithY(-(startY + 1f) * 48f);
-
-        // Gizmo.Draw.Line(lineLeft.WithX(startX), lineLeft.WithX(endX));
-        // Gizmo.Draw.Line(lineRight.WithX(startX), lineRight.WithX(endX));
-
-
         for (int y = 0; y < PlotY; y++)
         {
             for (int x = 0; x < PlotX; x++)
             {
+                const float scale = 30f;
+                const float offset = 1.1f;
+
                 Vector3 pos = Transform.LocalPosition;
-                pos.x -= 31f;
-                pos.x += x * 31f;
+                pos.x -= scale * offset;
+                pos.x += x * scale * offset;
 
-                pos.y -= 31f;
-                pos.y += y * 31f;
+                pos.y -= scale * offset;
+                pos.y += y * scale * offset;
 
-                Gizmo.Draw.SolidSphere(pos, 4f);
+                using (Gizmo.Scope("plot"))
+                {
+                    Gizmo.Draw.LineThickness = 1f;
+                    Gizmo.Draw.Color = Color.Cyan.WithAlpha(0.5f);
+                    Gizmo.Draw.LineBBox(BBox.FromPositionAndSize(pos.WithZ(25f), scale));
+                }
             }
         }
     }
