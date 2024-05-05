@@ -56,11 +56,10 @@
     }
 
 
-    protected override void OnAwake()
+    protected override void OnStart()
     {
-        base.OnAwake();
-        var data = Util.LoadCategories();
-        Categories = data;
+        base.OnStart();
+        Categories = Player.GameData.Categories;
     }
 
     private void OnItemClicked(int i)

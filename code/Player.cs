@@ -1,11 +1,20 @@
 namespace Kira;
 
+using System;
 using Sandbox.UI;
-using Component = Component;
 
 public sealed class Player : Component, Component.ExecuteInEditor
 {
     private ShopUI shopUI;
+    private static DataJson _gameData { get; set; }
+    public static DataJson GameData => _gameData;
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+
+        _gameData = Util.LoadData();
+    }
 
     protected override void OnStart()
     {

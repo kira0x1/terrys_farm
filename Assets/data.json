@@ -1,0 +1,56 @@
+{
+    "categories": [
+        {
+            "name": "seeds",
+            "icon": "volunteer_activism",
+            "CategoryType": 0,
+            "items": [
+                {
+                    "name": "grass",
+                    "icon": "grass"
+                },
+                {
+                    "name": "tree",
+                    "icon": "forest"
+                },
+                {
+                    "name": "tree",
+                    "icon": "forest"
+                },
+                {
+                    "name": "tree",
+                    "icon": "forest"
+                },
+                {
+                    "name": "tree",
+                    "icon": "forest"
+                }
+            ]
+        },
+        {
+            "name": "furniture",
+            "icon": "chair",
+            "CategoryType": 1,
+            "items": [
+                {
+                    "name": "chair",
+                    "icon": "chair"
+                },
+                {
+                    "name": "table",
+                    "icon": "table_restaurant"
+                }
+            ]
+        }
+    ],
+    "tools": [
+        {
+            "name": "inspect",
+            "icon": "search"
+        },
+        {
+            "name": "grass test",
+            "icon": "grass"
+        }
+    ]
+}
