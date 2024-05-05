@@ -23,15 +23,15 @@ PlayerUI {
     bottom: 350px;
 
     .container {
-      gap: 10px;
+      gap: 6px;
       width: 100%;
       flex-direction: row;
       justify-content: flex-start;
       align-content: flex-start;
 
       .slot {
-        width: 70px;
-        max-width: 85px;
+        width: 50px;
+        max-width: 65px;
         flex-shrink: 1;
         flex-grow: 1;
         min-height: 40px;
@@ -44,7 +44,7 @@ PlayerUI {
     .slot {
       justify-content: center;
       align-items: center;
-      font-size: 30%;
+      font-size: 1.8vw;
       color: #fff;
       background-color: #8a8a8a;
       flex-shrink: 0;
@@ -63,5 +63,42 @@ PlayerUI {
       background-color: #33c5ff;
       color: #fff;
     }
+  }
+
+  .resources-container {
+    background-color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 90px;
+    margin: 8px 0 0 8px;
+    border-radius: 4px;
+    padding: 6px;
+    align-items: center;
+
+    .resource {
+      width: 80px;
+      height: 100%;
+      border-radius: 3px;
+      background-color: #666;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding: 8px;
+
+      i {
+        width: 60%;
+        font-size: 30px;
+      }
+
+      .resource-text {
+        width: 40%;
+        justify-content: flex-end;
+        font-size: 20px;
+      }
+    }
+
+
   }
 }
