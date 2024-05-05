@@ -17,7 +17,7 @@ ShopUI {
     background-color: #8d8d8d;
 
     padding: 8px 16px 8px 8px;
-    gap: 10px;
+    gap: 8px;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -31,32 +31,16 @@ ShopUI {
       width: auto;
       min-width: 83px;
       max-width: 50%;
-      height: 80px;
       min-height: 69px;
       max-height: 69px;
-      height: auto;
       background-color: #aaa;
     }
-  }
-
-  .sidebar {
-    left: 0;
-    height: 100%;
-    width: 100px;
-    border: 6px #aaa;
-    background-color: #aaa;
-    border-radius: 4px 0 0 4px;
-    flex-direction: column;
-    gap: 8px;
-    flex-wrap: nowrap;
-    overflow: scroll;
-    padding-bottom: 10px;
   }
 
   .slot {
     justify-content: center;
     align-items: center;
-    font-size: 30%;
+    font-size: 1.8vw;
     color: #fff;
     background-color: #8a8a8a;
     flex-shrink: 0;
@@ -76,9 +60,21 @@ ShopUI {
     color: #fff;
   }
 
-  .title {
-    font-size: 25px;
-    font-family: Poppins;
-    color: #fff;
+  .sidebar {
+    left: 0;
+    height: 100%;
+    width: 100px;
+    border: 6px #aaa;
+    background-color: #aaa;
+    border-radius: 4px 0 0 4px;
+    flex-direction: column;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    padding-bottom: 10px;
+
+    .slot {
+      font-size: 1.5vw;
+    }
   }
 }
