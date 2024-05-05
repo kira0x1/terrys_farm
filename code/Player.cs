@@ -24,6 +24,13 @@ public sealed class Player : Component, Component.ExecuteInEditor
 
     protected override void OnUpdate()
     {
+        if (!shopUI.HasItemSelected) return;
+
+        if (Input.Pressed("attack1"))
+        {
+            shopUI.HasItemSelected = false;
+        }
+
         var pos = Mouse.Position;
         var ray = Scene.Camera.ScreenPixelToRay(pos.WithX(pos.x));
         var trace = Scene.Trace.Ray(ray, 1000f).WithTag("plot").Run();
@@ -31,6 +38,11 @@ public sealed class Player : Component, Component.ExecuteInEditor
         if (trace.Hit)
         {
             var endpos = trace.EndPosition.SnapToGrid(32f);
+            if (endpos.x > 32 || endpos.x < -32 || endpos.y > 32 || endpos.y < -32)
+            {
+                return;
+            }
+
             var box = BBox.FromPositionAndSize(endpos.WithZ(20f), 14f);
             Gizmo.Draw.SolidBox(box);
         }
