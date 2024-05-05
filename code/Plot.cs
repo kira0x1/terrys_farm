@@ -2,6 +2,21 @@ namespace Kira;
 
 using Sandbox;
 
+public class PlotSlot
+{
+    public bool Occupied { get; set; }
+    public readonly int x;
+    public readonly int y;
+    public Vector3 position;
+
+    public PlotSlot(int x, int y, Vector3 position = new Vector3())
+    {
+        this.x = x;
+        this.y = y;
+        this.position = position;
+    }
+}
+
 public sealed class Plot : Component
 {
     [Property]
@@ -10,15 +25,38 @@ public sealed class Plot : Component
     [Property]
     public int PlotY { get; private set; } = 3;
 
-    protected override void OnUpdate()
+    private const float scale = 30f;
+    private const float offset = 1.1f;
+
+    public Dictionary<Vector2Int, PlotSlot> Slots = new Dictionary<Vector2Int, PlotSlot>();
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+
+        Slots = new Dictionary<Vector2Int, PlotSlot>();
+        CreatePlots();
+    }
+
+    // protected override void OnUpdate()
+    // {
+    //     foreach (PlotSlot slot in Slots.Values)
+    //     {
+    //         using (Gizmo.Scope("plot"))
+    //         {
+    //             Gizmo.Draw.LineThickness = 1f;
+    //             Gizmo.Draw.Color = Color.Cyan.WithAlpha(0.5f);
+    //             Gizmo.Draw.LineBBox(BBox.FromPositionAndSize(slot.position.WithZ(25f), scale));
+    //         }
+    //     }
+    // }
+
+    private void CreatePlots()
     {
         for (int y = 0; y < PlotY; y++)
         {
             for (int x = 0; x < PlotX; x++)
             {
-                const float scale = 30f;
-                const float offset = 1.1f;
-
                 Vector3 pos = Transform.LocalPosition;
                 pos.x -= scale * offset;
                 pos.x += x * scale * offset;
@@ -26,12 +64,8 @@ public sealed class Plot : Component
                 pos.y -= scale * offset;
                 pos.y += y * scale * offset;
 
-                using (Gizmo.Scope("plot"))
-                {
-                    Gizmo.Draw.LineThickness = 1f;
-                    Gizmo.Draw.Color = Color.Cyan.WithAlpha(0.5f);
-                    Gizmo.Draw.LineBBox(BBox.FromPositionAndSize(pos.WithZ(25f), scale));
-                }
+                PlotSlot slot = new PlotSlot(x, y, pos);
+                Slots.Add(new Vector2Int(x, y), slot);
             }
         }
     }
