@@ -18,7 +18,7 @@
           "FieldOfView": 60,
           "IsMainCamera": true,
           "Orthographic": true,
-          "OrthographicHeight": 749.2971,
+          "OrthographicHeight": 567.5962,
           "Priority": 1,
           "RenderExcludeTags": "",
           "RenderTags": "",
@@ -59,174 +59,48 @@
       "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Sandbox.MeshComponent",
-          "__guid": "fbbb90da-8f1e-448f-992f-d4b6a7d9d532",
-          "Collision": "Mesh",
-          "Color": "1,1,1,1",
-          "IsTrigger": false,
-          "Mesh": {
-            "Topology": "H4sIAAAAAAAACk2MAQoAIAgDrSz7/4drBwoOjmKbczO7Ygg0hYuTHuB1hXgS/so\u002Bqi4vOdnOrb6NT15bJXy63JDz/\u002Bg6SXigAAAA",
-            "TextureOrigin": "0.0001068115,0.00001525879,-0.00001464094",
-            "Positions": [
-              "-255.9999,-256,0",
-              "255.9999,-256,0",
-              "255.9999,256,0",
-              "-255.9999,256,0"
-            ],
-            "TextureUAxis": [
-              "1,0,0"
-            ],
-            "TextureVAxis": [
-              "0,-1,0"
-            ],
-            "TextureScale": [
-              "0.25,0.25"
-            ],
-            "TextureOffset": [
-              "0,0"
-            ],
-            "TextureAngle": [
-              0
-            ],
-            "MaterialIndex": [
-              2
-            ],
-            "EdgeFlags": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "Materials": [
-              "materials/dev/reflectivity_30.vmat",
-              "materials/dev/simple/simple_tile.vmat",
-              "materials/floor.vmat"
-            ]
-          },
-          "SmoothingAngle": 40,
-          "Static": true
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "dea4dfb7-2892-47a5-af8c-6b9b5cf7e815",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/floor.vmat",
+          "Model": "models/room.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
         }
       ]
     },
     {
       "__guid": "dde7c045-8ab1-45a1-9a24-90f175d31afc",
       "Name": "3x3 Plot",
+      "Position": "0,0,14.63449",
+      "Scale": "2,2,0.5",
       "Tags": "plot",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Sandbox.MeshComponent",
-          "__guid": "fd245e5b-8745-4e44-82b7-8abad28a94c4",
-          "Collision": "Mesh",
-          "Color": "1,1,1,1",
-          "IsTrigger": false,
-          "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
-            "TextureOrigin": "112,-144,15.98954",
-            "Positions": [
-              "-47.99998,-48,16",
-              "47.99998,-48,16",
-              "47.99998,48,16",
-              "-47.99998,48,16",
-              "-47.99998,48,-16",
-              "47.99998,48,-16",
-              "47.99998,-48,-16",
-              "-47.99998,-48,-16"
-            ],
-            "TextureUAxis": [
-              "1,0,0",
-              "1,0,0",
-              "0,-1,0",
-              "0,1,0",
-              "-1,0,0",
-              "1,0,0"
-            ],
-            "TextureVAxis": [
-              "0,-1,0",
-              "0,-1,0",
-              "0,0,-1",
-              "0,0,-1",
-              "0,0,-1",
-              "0,0,-1"
-            ],
-            "TextureScale": [
-              "0.5,0.5",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25"
-            ],
-            "TextureOffset": [
-              "0,0",
-              "0,0",
-              "0,0",
-              "0,0",
-              "0,0",
-              "0,0"
-            ],
-            "TextureAngle": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "MaterialIndex": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "EdgeFlags": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "Materials": [
-              "materials/dev/reflectivity_30.vmat",
-              "materials/dev/simple/simple_tint_128.vmat",
-              "materials/dev/dev_measuregeneric01.vmat"
-            ]
-          },
-          "SmoothingAngle": 40,
-          "Static": true
-        },
-        {
           "__type": "Kira.Plot",
           "__guid": "a197a3fb-332c-4b1e-9fe8-2cfc00b9263e",
           "PlotX": 3,
           "PlotY": 3
+        },
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "c5e89aaf-b0c4-444b-a75f-c6c78f7c830f",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/floor.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "0.71628,0.71628,0.71628,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "3d6645f6-4535-4ab1-bf0d-80fa3c535235",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
         }
       ]
     },
@@ -264,10 +138,41 @@
         },
         {
           "__type": "ShopUI",
-          "__guid": "4b6e172c-d2d1-4792-ad00-22870a2bf4a7",
-          "Categories": [
-            "data/seed.category",
-            "data/furniture.category"
+          "__guid": "4b6e172c-d2d1-4792-ad00-22870a2bf4a7"
+        }
+      ]
+    },
+    {
+      "__guid": "8d6234bc-e663-416d-a98a-6e8b60e6d43c",
+      "Name": "Plant",
+      "Position": "0,0,32",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Kira.Plant",
+          "__guid": "2f08abc9-5aad-405f-8b80-be86d2a865ae"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "d8d0b832-082d-40fd-8159-6d11b2cedd22",
+          "Name": "Model",
+          "Position": "0,0,12.5",
+          "Scale": "0.25,0.25,0.25",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "1f9f3f7e-e361-4898-9d7d-ae651790fd3f",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
           ]
         }
       ]
@@ -296,7 +201,7 @@
   },
   "Title": "farm",
   "Description": "",
-  "LastSaved": "2024-05-03T19:18:03.7377864\u002B01:00",
+  "LastSaved": "2024-05-05T22:20:24.7400086\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
