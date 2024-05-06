@@ -1,6 +1,5 @@
 namespace Kira;
 
-using System;
 using Sandbox.UI;
 
 public sealed class Player : Component, Component.ExecuteInEditor

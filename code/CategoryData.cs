@@ -21,6 +21,8 @@ public class CategoryItem
     public string Icon { get; set; }
     public int Cost { get; set; }
     public YieldData[] Yield { get; set; }
+    public float TickRate { get; set; }
+    public int BloomTicks { get; set; }
 }
 
 public class YieldData

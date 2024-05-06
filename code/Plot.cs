@@ -28,6 +28,14 @@ public sealed class Plot : Component
 
     protected override void OnUpdate()
     {
+        foreach (var slot in Slots.Values)
+        {
+            if (slot.Occupied)
+            {
+                slot.Tick();
+            }
+        }
+
         if (devUi.PlantDisplayOn)
         {
             DisplayPlantGizmos();
@@ -50,7 +58,7 @@ public sealed class Plot : Component
         {
             if (slot.Occupied)
             {
-                Gizmo.Draw.Color = Color.Red;
+                Gizmo.Draw.Color = slot.HasBloomed ? Color.Yellow : Color.Red;
             }
 
             var box = BBox.FromPositionAndSize(slot.position.WithZ(20f), 14f);

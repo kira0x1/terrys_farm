@@ -9,6 +9,8 @@
           "name": "grass",
           "icon": "grass",
           "cost": 1,
+          "tickRate": 1,
+          "bloomTicks": 10,
           "yield": [
             {
               "yieldType": "grass_seed",
