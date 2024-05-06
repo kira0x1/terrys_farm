@@ -12,6 +12,8 @@ public sealed class Player : Component, Component.ExecuteInEditor
     [Property]
     public int Gold { get; set; } = 20;
 
+    private InspectUI inspectUi;
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -22,13 +24,15 @@ public sealed class Player : Component, Component.ExecuteInEditor
     protected override void OnStart()
     {
         base.OnStart();
+
+        inspectUi = Scene.Components.GetAll<InspectUI>().First();
         shopUI = Scene.Components.GetAll<ShopUI>().First();
     }
 
     protected override void OnUpdate()
     {
-        if (!shopUI.HasItemSelected) return;
-
+        if (inspectUi == null) return;
+        if (!shopUI.HasItemSelected && !inspectUi.IsInspectOn) return;
 
         var pos = Mouse.Position;
         var ray = Scene.Camera.ScreenPixelToRay(pos.WithX(pos.x));
@@ -49,10 +53,18 @@ public sealed class Player : Component, Component.ExecuteInEditor
                 int ySlot = (int)(endpos.y / 32);
 
                 Vector2Int slotId = new Vector2Int(xSlot, ySlot);
+
                 plot.Hovering(slotId);
 
-                if (Input.Pressed("attack1"))
+                var slot = plot.Slots[slotId];
+
+                inspectUi.SlotHovering = slot;
+                inspectUi.IsHovering = true;
+
+                if (Input.Pressed("attack1") && shopUI.HasItemSelected)
                 {
+                    if (slot.Occupied) return;
+
                     Gold -= shopUI.ItemSelected.Cost;
                     shopUI.HasItemSelected = false;
                     plot.PlantSlot(slotId, shopUI.ItemSelected);
@@ -61,6 +73,7 @@ public sealed class Player : Component, Component.ExecuteInEditor
         }
         else
         {
+            inspectUi.IsHovering = false;
             if (Input.Pressed("attack1"))
             {
                 shopUI.HasItemSelected = false;

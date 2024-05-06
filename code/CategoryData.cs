@@ -1,7 +1,5 @@
 ﻿namespace Kira;
 
-using System;
-
 public enum CategoryTypes
 {
     Seeds,
@@ -22,4 +20,14 @@ public class CategoryItem
     public string Name { get; set; }
     public string Icon { get; set; }
     public int Cost { get; set; }
+    public YieldData[] Yield { get; set; }
+}
+
+public class YieldData
+{
+    public string YieldType { get; set; }
+    public int MinAmount { get; set; }
+    public int MaxAmount { get; set; }
+    public int Amount { get; set; }
+    public bool IsRandom { get; set; }
 }

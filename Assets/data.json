@@ -1,61 +1,77 @@
 {
-    "categories": [
+  "categories": [
+    {
+      "name": "seeds",
+      "icon": "volunteer_activism",
+      "CategoryType": 0,
+      "items": [
         {
-            "name": "seeds",
-            "icon": "volunteer_activism",
-            "CategoryType": 0,
-            "items": [
-                {
-                    "name": "grass",
-                    "icon": "grass",
-                    "cost": 1
-                },
-                {
-                    "name": "tree",
-                    "icon": "forest",
-                    "cost": 10
-                },
-                {
-                    "name": "tree",
-                    "icon": "forest",
-                    "cost": 10
-                },
-                {
-                    "name": "tree",
-                    "icon": "forest",
-                    "cost": 10
-                },
-                {
-                    "name": "tree",
-                    "icon": "forest",
-                    "cost": 10
-                }
-            ]
+          "name": "grass",
+          "icon": "grass",
+          "cost": 1,
+          "yield": [
+            {
+              "yieldType": "grass_seed",
+              "isRandom": true,
+              "minAmount": 0,
+              "maxAmount": 4,
+              "amount": 0
+            },
+            {
+              "isRandom": false,
+              "yieldType": "coin",
+              "minAmount": 0,
+              "maxAmount": 0,
+              "amount": 1
+            }
+          ]
         },
         {
-            "name": "furniture",
-            "icon": "chair",
-            "CategoryType": 1,
-            "items": [
-                {
-                    "name": "chair",
-                    "icon": "chair"
-                },
-                {
-                    "name": "table",
-                    "icon": "table_restaurant"
-                }
-            ]
-        }
-    ],
-    "tools": [
-        {
-            "name": "inspect",
-            "icon": "search"
+          "name": "tree",
+          "icon": "forest",
+          "cost": 10
         },
         {
-            "name": "grass test",
-            "icon": "grass"
+          "name": "tree",
+          "icon": "forest",
+          "cost": 10
+        },
+        {
+          "name": "tree",
+          "icon": "forest",
+          "cost": 10
+        },
+        {
+          "name": "tree",
+          "icon": "forest",
+          "cost": 10
         }
-    ]
+      ]
+    },
+    {
+      "name": "furniture",
+      "icon": "chair",
+      "CategoryType": 1,
+      "items": [
+        {
+          "name": "chair",
+          "icon": "chair"
+        },
+        {
+          "name": "table",
+          "icon": "table_restaurant"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "name": "inspect",
+      "icon": "search"
+    },
+    {
+      "name": "grass test",
+      "icon": "grass"
+    }
+  ]
 }

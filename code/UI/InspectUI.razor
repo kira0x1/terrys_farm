@@ -1,0 +1,52 @@
+@using Kira
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+@if (!IsInspectOn || !IsHovering) return;
+
+<root>
+    <div class="display">
+        @if (!SlotHovering.Occupied)
+        {
+            <div class="field">
+                Empty!
+            </div>
+            return;
+        }
+
+        <div class="row">
+            <div class="field">
+                @Item.Name
+            </div>
+            <div class="field">
+                <i>@Item.Icon</i>
+            </div>
+        </div>
+
+        @if (Item.Yield.Length > 0)
+        {
+            @foreach (YieldData yield in Item.Yield)
+            {
+                <div class="row">
+                    <div class="field">
+                        @("yield: " + yield.YieldType)
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</root>
+
+@code
+{
+    public bool IsInspectOn { get; set; }
+    public bool IsHovering { get; set; }
+    public PlotSlot SlotHovering { get; set; }
+    private CategoryItem Item => SlotHovering.Item;
+
+    /// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine(Time.Now);
+}

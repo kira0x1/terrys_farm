@@ -24,7 +24,6 @@
                     cname += " active";
                 }
 
-
                 int i1 = i;
                 <div class=@cname onclick="@(() => OnToolClicked(i1))">
                     <i>@tool.Icon</i>
@@ -42,12 +41,15 @@
 
     private ToolData[] Tools { get; set; }
     private Player player { get; set; }
+    private InspectUI inspectUi { get; set; }
 
 
     protected override void OnAwake()
     {
         base.OnAwake();
         player = Scene.Components.GetAll<Player>().FirstOrDefault();
+        inspectUi = Scene.Components.GetAll<InspectUI>().FirstOrDefault();
+
         var data = Util.LoadToolData();
         Tools = data;
     }
@@ -62,10 +64,13 @@
         if (HasToolSelected && ToolSelected == i)
         {
             HasToolSelected = false;
-            return;
+        }
+        else
+        {
+            ToolSelected = i;
+            HasToolSelected = true;
         }
 
-        ToolSelected = i;
-        HasToolSelected = true;
+        inspectUi.IsInspectOn = i == 0 && HasToolSelected;
     }
 }

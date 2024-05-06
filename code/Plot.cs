@@ -2,23 +2,6 @@ namespace Kira;
 
 using Sandbox.UI;
 
-public class PlotSlot
-{
-    public bool Occupied { get; set; }
-    public CategoryItem Item { get; set; }
-
-    public readonly int x;
-    public readonly int y;
-    public Vector3 position;
-
-    public PlotSlot(int x, int y, Vector3 position = new Vector3())
-    {
-        this.x = x;
-        this.y = y;
-        this.position = position;
-    }
-}
-
 public sealed class Plot : Component
 {
     [Property]
@@ -45,19 +28,17 @@ public sealed class Plot : Component
 
     protected override void OnUpdate()
     {
-        if (!devUi.PlantDisplayOn) return;
-
-        foreach (var slot in Slots.Keys)
+        if (devUi.PlantDisplayOn)
         {
-            Log.Info(slot);
-            Hovering(slot);
+            DisplayPlantGizmos();
+        }
+    }
 
-            using (Gizmo.Scope("plot"))
-            {
-                Gizmo.Draw.LineThickness = 1f;
-                Gizmo.Draw.Color = Color.Cyan.WithAlpha(0.5f);
-                // Gizmo.Draw.LineBBox(BBox.FromPositionAndSize(slot.position.WithZ(25f), scale));
-            }
+    private void DisplayPlantGizmos()
+    {
+        foreach (var slot in Slots)
+        {
+            Hovering(slot.Key);
         }
     }
 
@@ -101,31 +82,8 @@ public sealed class Plot : Component
                 int ySlot = (int)(pos.y / 32);
 
                 PlotSlot slot = new PlotSlot(xSlot, ySlot, pos);
-
-
                 Slots.Add(new Vector2Int(xSlot, ySlot), slot);
             }
         }
-    }
-
-    private void DrawBox(int x, int y)
-    {
-        const float xOffset = 31.8f;
-
-        var box = Vector3.Zero;
-        box.x += x * xOffset + Transform.Position.x * 0.8f;
-
-        box.y -= (PlotY * xOffset) / 2f;
-
-
-        box.y += y * xOffset + Transform.Position.y;
-        var b2 = box;
-
-        b2.x += xOffset;
-        b2.y += xOffset;
-
-
-        var bx = new BBox(box, b2);
-        Gizmo.Draw.LineBBox(bx);
     }
 }

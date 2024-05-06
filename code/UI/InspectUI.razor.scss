@@ -1,0 +1,47 @@
+InspectUI {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .display {
+    width: 100%;
+    height: 100%;
+    background-color: #444;
+    font-weight: 620;
+    border-radius: 8px;
+    padding: 30px;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    .row {
+      height: 10%;
+      width: 100%;
+      padding-left: 10px;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+    }
+
+    .field {
+      flex-shrink: 1;
+      flex-grow: 1;
+
+
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+
+      font-size: 100%;
+      font-family: Poppins;
+      color: #fff;
+    }
+  }
+
+  .title {
+    font-size: 25px;
+    font-family: Poppins;
+    color: #fff;
+  }
+}
