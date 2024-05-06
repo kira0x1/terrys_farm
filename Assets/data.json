@@ -10,7 +10,7 @@
           "icon": "grass",
           "cost": 1,
           "tickRate": 1,
-          "bloomTicks": 10,
+          "bloomTicks": 4,
           "yield": [
             {
               "yieldType": "grass_seed",
