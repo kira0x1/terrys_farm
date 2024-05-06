@@ -1,0 +1,32 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+    <div class="container">
+        @{
+            var plantClass = "";
+            if (PlantDisplayOn) plantClass = "active";
+        }
+
+        <button class="@plantClass" onclick="@TogglePlantDisplay">
+            Toggle Plants
+        </button>
+    </div>
+</root>
+
+@code
+{
+    public bool PlantDisplayOn { get; set; } = false;
+
+    private void TogglePlantDisplay()
+    {
+        PlantDisplayOn = !PlantDisplayOn;
+    }
+
+
+    /// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine(PlantDisplayOn);
+}

@@ -21,4 +21,5 @@ public class CategoryItem
 {
     public string Name { get; set; }
     public string Icon { get; set; }
+    public int Cost { get; set; }
 }

@@ -7,7 +7,7 @@
     <div class="resources-container">
         <div class="resource">
             <i>hub</i>
-            <div class="resource-text">10</div>
+            <div class="resource-text">@player.Gold</div>
         </div>
     </div>
 
@@ -41,11 +41,13 @@
     public bool HasToolSelected { get; set; } = false;
 
     private ToolData[] Tools { get; set; }
+    private Player player { get; set; }
 
 
     protected override void OnAwake()
     {
         base.OnAwake();
+        player = Scene.Components.GetAll<Player>().FirstOrDefault();
         var data = Util.LoadToolData();
         Tools = data;
     }
@@ -53,7 +55,7 @@
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(ToolSelected, HasToolSelected);
+    protected override int BuildHash() => System.HashCode.Combine(ToolSelected, HasToolSelected, player.Gold);
 
     private void OnToolClicked(int i)
     {

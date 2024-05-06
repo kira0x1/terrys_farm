@@ -1,0 +1,47 @@
+DevUI {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 20px;
+  color: white;
+  font-family: Poppins;
+
+  .container {
+    position: absolute;
+    bottom: 10px;
+    width: 500px;
+    height: 100px;
+    background-color: #666;
+    padding: 10px;
+    border-radius: 3px;
+    pointer-events: all;
+
+    .button {
+      width: 120px;
+      background-color: #888;
+      border-radius: 2px;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: #444;
+      }
+    }
+
+    .button.active {
+      background-color: #555;
+      border: 2px;
+    }
+  }
+
+  .title {
+    font-size: 25px;
+    font-family: Poppins;
+    color: #fff;
+  }
+}

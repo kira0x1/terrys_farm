@@ -22,4 +22,5 @@ public class PlantData
     public string Name { get; set; }
     public string Icon { get; set; }
     public PlantType PlantType { get; set; }
+    public int Cost { get; set; }
 }

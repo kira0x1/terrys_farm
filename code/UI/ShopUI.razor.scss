@@ -60,6 +60,10 @@ ShopUI {
     color: #fff;
   }
 
+  .slot.disabled {
+    background-color: #666;
+  }
+
   .sidebar {
     left: 0;
     height: 100%;

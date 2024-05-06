@@ -36,6 +36,12 @@
 
                 CategoryItem item = categorySelected.Items[i];
 
+                if (item.Cost > player.Gold)
+                {
+                    cname = "slot disabled";
+                }
+
+
                 int i1 = i;
                 <div class=@cname onclick="@(() => OnItemClicked(i1))">
                     <i>@item.Icon</i>
@@ -48,6 +54,7 @@
 @code
 {
     public int Slots = 0;
+    private Player player;
 
     private void OnSlotClicked(CategoryTypes category)
     {
@@ -55,6 +62,11 @@
         CategorySelected = category;
     }
 
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        player = Scene.Components.GetAll<Player>().FirstOrDefault();
+    }
 
     protected override void OnStart()
     {
@@ -84,6 +96,6 @@
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(CategorySelected, HasItemSelected, ItemSelectedId);
+    protected override int BuildHash() => System.HashCode.Combine(CategorySelected, HasItemSelected, ItemSelectedId, player.Gold);
 
 }

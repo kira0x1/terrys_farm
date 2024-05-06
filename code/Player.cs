@@ -9,6 +9,9 @@ public sealed class Player : Component, Component.ExecuteInEditor
     private static DataJson _gameData { get; set; }
     public static DataJson GameData => _gameData;
 
+    [Property]
+    public int Gold { get; set; } = 20;
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -26,10 +29,6 @@ public sealed class Player : Component, Component.ExecuteInEditor
     {
         if (!shopUI.HasItemSelected) return;
 
-        if (Input.Pressed("attack1"))
-        {
-            shopUI.HasItemSelected = false;
-        }
 
         var pos = Mouse.Position;
         var ray = Scene.Camera.ScreenPixelToRay(pos.WithX(pos.x));
@@ -43,25 +42,28 @@ public sealed class Player : Component, Component.ExecuteInEditor
                 return;
             }
 
-            var box = BBox.FromPositionAndSize(endpos.WithZ(20f), 14f);
-
-
             Plot plot = trace.GameObject.Components.Get<Plot>();
             if (plot.IsValid)
             {
                 int xSlot = (int)(endpos.x / 32);
                 int ySlot = (int)(endpos.y / 32);
-                
+
                 Vector2Int slotId = new Vector2Int(xSlot, ySlot);
+                plot.Hovering(slotId);
 
-                var slot = plot.Slots[slotId];
-                if (slot.Occupied)
+                if (Input.Pressed("attack1"))
                 {
-                    Gizmo.Draw.Color = Color.Red;
+                    Gold -= shopUI.ItemSelected.Cost;
+                    shopUI.HasItemSelected = false;
+                    plot.PlantSlot(slotId, shopUI.ItemSelected);
                 }
-
-                Gizmo.Draw.SolidBox(box);
-                // Log.Info($"x:{xSlot}, y:{ySlot}");
+            }
+        }
+        else
+        {
+            if (Input.Pressed("attack1"))
+            {
+                shopUI.HasItemSelected = false;
             }
         }
     }

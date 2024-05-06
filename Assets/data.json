@@ -7,23 +7,28 @@
             "items": [
                 {
                     "name": "grass",
-                    "icon": "grass"
+                    "icon": "grass",
+                    "cost": 1
                 },
                 {
                     "name": "tree",
-                    "icon": "forest"
+                    "icon": "forest",
+                    "cost": 10
                 },
                 {
                     "name": "tree",
-                    "icon": "forest"
+                    "icon": "forest",
+                    "cost": 10
                 },
                 {
                     "name": "tree",
-                    "icon": "forest"
+                    "icon": "forest",
+                    "cost": 10
                 },
                 {
                     "name": "tree",
-                    "icon": "forest"
+                    "icon": "forest",
+                    "cost": 10
                 }
             ]
         },
