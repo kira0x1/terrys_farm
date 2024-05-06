@@ -64,6 +64,12 @@
 
     private void OnItemClicked(int i)
     {
+        if (HasItemSelected && ItemSelectedId == i)
+        {
+            HasItemSelected = false;
+            return;
+        }
+
         ItemSelectedId = i;
         HasItemSelected = true;
     }
