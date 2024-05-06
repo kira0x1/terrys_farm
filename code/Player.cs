@@ -44,7 +44,25 @@ public sealed class Player : Component, Component.ExecuteInEditor
             }
 
             var box = BBox.FromPositionAndSize(endpos.WithZ(20f), 14f);
-            Gizmo.Draw.SolidBox(box);
+
+
+            Plot plot = trace.GameObject.Components.Get<Plot>();
+            if (plot.IsValid)
+            {
+                int xSlot = (int)(endpos.x / 32);
+                int ySlot = (int)(endpos.y / 32);
+                
+                Vector2Int slotId = new Vector2Int(xSlot, ySlot);
+
+                var slot = plot.Slots[slotId];
+                if (slot.Occupied)
+                {
+                    Gizmo.Draw.Color = Color.Red;
+                }
+
+                Gizmo.Draw.SolidBox(box);
+                // Log.Info($"x:{xSlot}, y:{ySlot}");
+            }
         }
     }
 }

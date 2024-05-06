@@ -1,5 +1,6 @@
 namespace Kira;
 
+using System.Runtime.CompilerServices;
 using Sandbox;
 
 public class PlotSlot
@@ -64,8 +65,17 @@ public sealed class Plot : Component
                 pos.y -= scale * offset;
                 pos.y += y * scale * offset;
 
-                PlotSlot slot = new PlotSlot(x, y, pos);
-                Slots.Add(new Vector2Int(x, y), slot);
+                int xSlot = (int)(pos.x / 32);
+                int ySlot = (int)(pos.y / 32);
+
+                PlotSlot slot = new PlotSlot(xSlot, ySlot, pos);
+
+                if (xSlot == -1)
+                {
+                    slot.Occupied = true;
+                }
+
+                Slots.Add(new Vector2Int(xSlot, ySlot), slot);
             }
         }
     }
