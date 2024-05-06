@@ -62,11 +62,11 @@ public sealed class Player : Component, Component.ExecuteInEditor
 
                 if (Input.Pressed("attack1") && shopUI.HasItemSelected)
                 {
-                    if (slot.Occupied) return;
+                    if (slot.IsOccupied) return;
 
                     Gold -= shopUI.ItemSelected.Cost;
                     shopUI.HasItemSelected = false;
-                    plot.PlantSlot(slotId, shopUI.ItemSelected);
+                    plot.PlantSlot(slotId, shopUI.ItemSelected, shopUI.CategorySelectedType);
                 }
             }
         }

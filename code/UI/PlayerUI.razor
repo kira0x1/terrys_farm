@@ -50,8 +50,8 @@
         player = Scene.Components.GetAll<Player>().FirstOrDefault();
         inspectUi = Scene.Components.GetAll<InspectUI>().FirstOrDefault();
 
-        var data = Util.LoadToolData();
-        Tools = data;
+        var data = Util.LoadData();
+        Tools = data.Tools;
     }
 
     /// <summary>

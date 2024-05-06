@@ -30,10 +30,7 @@ public sealed class Plot : Component
     {
         foreach (var slot in Slots.Values)
         {
-            if (slot.Occupied)
-            {
-                slot.Tick();
-            }
+            slot.Tick();
         }
 
         if (devUi.PlantDisplayOn)
@@ -56,7 +53,7 @@ public sealed class Plot : Component
 
         using (Gizmo.Scope("slot"))
         {
-            if (slot.Occupied)
+            if (slot.IsOccupied)
             {
                 Gizmo.Draw.Color = slot.HasBloomed ? Color.Yellow : Color.Red;
             }
@@ -66,11 +63,10 @@ public sealed class Plot : Component
         }
     }
 
-    public void PlantSlot(Vector2Int slotId, CategoryItem item)
+    public void PlantSlot(Vector2Int slotId, CategoryItem item, CategoryTypes category)
     {
-        var slot = Slots[slotId];
-        slot.Occupied = true;
-        slot.Item = item;
+        PlotSlot slot = Slots[slotId];
+        slot.PlaceItem(item, category);
     }
 
     private void CreatePlots()

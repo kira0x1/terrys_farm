@@ -2,34 +2,9 @@
 
 public static class Util
 {
-    public static CategoryData[] LoadCategories()
-    {
-        var jsonData = FileSystem.Mounted.ReadJson<CategoryData[]>("category.json");
-        return jsonData;
-    }
-
-    public static ToolData[] LoadToolData()
-    {
-        var jsonData = FileSystem.Mounted.ReadJson<ToolData[]>("tools.json");
-
-        return jsonData;
-    }
-
     public static DataJson LoadData()
     {
         var jsonData = FileSystem.Mounted.ReadJson<DataJson>("data.json");
-        Log.Info("loaded data");
-
-        var item = jsonData.Categories[0].Items[0];
-        Log.Info($"item: {item.Name}");
-
-        var yields = item.Yield;
-
-        foreach (YieldData yieldData in yields)
-        {
-            Log.Info($"yield: {yieldData.YieldType}, max: {yieldData.MaxAmount}");
-        }
-
         return jsonData;
     }
 
