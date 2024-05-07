@@ -13,7 +13,6 @@
 
     <div class="toolbar">
         <div class="container">
-
             @for (var i = 0; i < Tools.Length; i++)
             {
                 ToolData tool = Tools[i];
@@ -29,7 +28,24 @@
                     <i>@tool.Icon</i>
                 </div>
             }
+        </div>
+    </div>
 
+    <div class="bottom-bar">
+        @{
+            var tabClass1 = "slot";
+            var tabClass2 = "slot";
+
+            if (TabSelected == TabTypes.Shop) tabClass1 += " active";
+            if (TabSelected == TabTypes.Inventory) tabClass2 += " active";
+        }
+
+        <div class=@tabClass1 onclick=@(() => OnTabClicked(TabTypes.Shop))>
+            Shop
+        </div>
+
+        <div class=@tabClass2 onclick=@(() => OnTabClicked(TabTypes.Inventory))>
+            Bag
         </div>
     </div>
 </root>
@@ -43,6 +59,18 @@
     private Player player { get; set; }
     private InspectUI inspectUi { get; set; }
 
+    public enum TabTypes
+    {
+        Shop,
+        Inventory,
+    }
+
+    private void OnTabClicked(TabTypes tabType)
+    {
+        TabSelected = tabType;
+    }
+
+    public TabTypes TabSelected { get; private set; }
 
     protected override void OnAwake()
     {
@@ -57,7 +85,7 @@
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(ToolSelected, HasToolSelected, player.Gold);
+    protected override int BuildHash() => System.HashCode.Combine(ToolSelected, HasToolSelected, player.Gold, TabSelected);
 
     private void OnToolClicked(int i)
     {

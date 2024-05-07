@@ -8,6 +8,7 @@
         {
           "name": "grass",
           "icon": "grass",
+          "seedId": 0,
           "cost": 1,
           "tickRate": 1,
           "bloomTicks": 3,
@@ -30,21 +31,7 @@
         },
         {
           "name": "tree",
-          "icon": "forest",
-          "cost": 10
-        },
-        {
-          "name": "tree",
-          "icon": "forest",
-          "cost": 10
-        },
-        {
-          "name": "tree",
-          "icon": "forest",
-          "cost": 10
-        },
-        {
-          "name": "tree",
+          "seedId": 1,
           "icon": "forest",
           "cost": 10
         }

@@ -17,6 +17,7 @@ public class CategoryData
 
 public class CategoryItem
 {
+    public int SeedId { get; set; }
     public string Name { get; set; }
     public string Icon { get; set; }
     public int Cost { get; set; }

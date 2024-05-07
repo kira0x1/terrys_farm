@@ -2,7 +2,7 @@ namespace Kira;
 
 using Sandbox.UI;
 
-public sealed class Player : Component, Component.ExecuteInEditor
+public sealed partial class Player : Component
 {
     private ShopUI shopUI;
     private static DataJson _gameData { get; set; }

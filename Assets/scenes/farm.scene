@@ -144,6 +144,10 @@
         {
           "__type": "DevUI",
           "__guid": "a0e8556e-1c73-4981-8343-10e05a10980f"
+        },
+        {
+          "__type": "InventoryUI",
+          "__guid": "410ef610-b25a-4717-ba09-dea6cabe5cdf"
         }
       ]
     },
@@ -194,7 +198,7 @@
   },
   "Title": "farm",
   "Description": "",
-  "LastSaved": "2024-05-06T16:44:26.4157129\u002B01:00",
+  "LastSaved": "2024-05-07T11:43:21.2791099\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
