@@ -11,7 +11,7 @@
           "seedId": 0,
           "cost": 1,
           "tickRate": 1,
-          "bloomTicks": 5,
+          "bloomTicks": 50,
           "yield": [
             {
               "yieldType": "seed",

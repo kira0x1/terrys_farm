@@ -30,17 +30,19 @@
             </div>
         </div>
 
-        @if (Item.Yield.Length > 0)
-        {
-            @foreach (YieldData yield in Item.Yield)
+        <div class="yield-container">
+            @if (Item.Yield.Length > 0)
             {
-                <div class="row">
-                    <div class="field">
-                        @("yield: " + yield.YieldType)
+                @foreach (YieldData yield in Item.Yield)
+                {
+                    <div class="row">
+                        <div class="field">
+                            @("yield: " + yield.YieldType)
+                        </div>
                     </div>
-                </div>
+                }
             }
-        }
+        </div>
     </div>
 </root>
 

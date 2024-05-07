@@ -14,6 +14,8 @@ InspectUI {
     padding: 30px;
     justify-content: space-evenly;
     flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
 
     .row {
       height: 10%;
@@ -24,11 +26,18 @@ InspectUI {
       justify-content: center;
     }
 
+    .yield-container {
+      width: 100%;
+      flex-direction: column;
+
+      .row {
+        height: auto;
+      }
+    }
+
     .field {
       flex-shrink: 1;
       flex-grow: 1;
-
-
       justify-content: flex-start;
       align-items: center;
       align-content: center;
