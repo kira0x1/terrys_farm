@@ -6,7 +6,6 @@ InventoryUI {
   height: 350px;
   bottom: 100px;
   right: 0;
-  pointer-events: all;
 
   .container {
     width: 100%;
@@ -25,6 +24,7 @@ InventoryUI {
     overflow-y: scroll;
 
     .slot {
+      pointer-events: all;
       flex-grow: 1;
       flex-shrink: 1;
       width: auto;
@@ -33,6 +33,11 @@ InventoryUI {
       min-height: 69px;
       max-height: 69px;
       background-color: #aaa;
+
+      &:hover {
+        background-color: #fff;
+        color: #aaa;
+      }
     }
   }
 
@@ -61,23 +66,5 @@ InventoryUI {
 
   .slot.disabled {
     background-color: #666;
-  }
-
-  .sidebar {
-    left: 0;
-    height: 100%;
-    width: 100px;
-    border: 6px #aaa;
-    background-color: #aaa;
-    border-radius: 4px 0 0 4px;
-    flex-direction: column;
-    gap: 8px;
-    flex-wrap: nowrap;
-    overflow: scroll;
-    padding-bottom: 10px;
-
-    .slot {
-      font-size: 1.5vw;
-    }
   }
 }

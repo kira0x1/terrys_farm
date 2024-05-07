@@ -4,8 +4,12 @@ public sealed partial class Player : Component
 {
     public Dictionary<int, InventoryItem> Seeds = new Dictionary<int, InventoryItem>();
 
-    public void AddToInventory(CategoryItem item)
+    public void AddToInventory(CategoryItem item, CategoryTypes category)
     {
+        if (category != CategoryTypes.Seeds) return;
+
+        Gold -= item.Cost;
+
         if (Seeds.TryGetValue(item.SeedId, out InventoryItem seed))
         {
             seed.Amount++;
@@ -16,6 +20,11 @@ public sealed partial class Player : Component
             InventoryItem invItem = new InventoryItem(item);
             Seeds.Add(item.SeedId, invItem);
         }
+    }
+
+    public void OnUseItem(int id)
+    {
+        Seeds[id].Amount--;
     }
 }
 

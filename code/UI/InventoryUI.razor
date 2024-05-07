@@ -6,7 +6,13 @@
 
 
 @if (playerUI.TabSelected != PlayerUI.TabTypes.Inventory) return;
-<root>
+
+@{
+    var rootStyle = "z-index: -100";
+    if (playerUI.TabSelected == PlayerUI.TabTypes.Inventory) rootStyle = "z-index: 100";
+}
+
+<root style="@rootStyle">
     <div class="container">
         @{
             for (var i = 0; i < Seeds.Count; i++)
@@ -41,12 +47,7 @@
     private int ItemSelectedId { get; set; } = 0;
 
     private List<InventoryItem> Seeds => player.Seeds.Values.ToList();
-
-
-    private void OnSlotClicked(CategoryTypes category)
-    {
-        HasItemSelected = false;
-    }
+    public InventoryItem ItemSelected => player.Seeds[ItemSelectedId];
 
     protected override void OnAwake()
     {
@@ -57,11 +58,17 @@
 
     private void OnItemClicked(int i)
     {
+        if (ItemSelected.Amount < 1) return;
         if (HasItemSelected && ItemSelectedId == i)
         {
             HasItemSelected = false;
             return;
         }
+
+        ItemSelectedId = i;
+        HasItemSelected = true;
+
+        Log.Info(HasItemSelected);
     }
 
 

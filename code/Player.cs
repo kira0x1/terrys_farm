@@ -4,7 +4,8 @@ using Sandbox.UI;
 
 public sealed partial class Player : Component
 {
-    private ShopUI shopUI;
+    private InventoryUI inventoryUI;
+
     private static DataJson _gameData { get; set; }
     public static DataJson GameData => _gameData;
 
@@ -25,13 +26,13 @@ public sealed partial class Player : Component
         base.OnStart();
 
         inspectUi = Scene.Components.GetAll<InspectUI>().First();
-        shopUI = Scene.Components.GetAll<ShopUI>().First();
+        inventoryUI = Scene.Components.GetAll<InventoryUI>().First();
     }
 
     protected override void OnUpdate()
     {
         if (inspectUi == null) return;
-        if (!shopUI.HasItemSelected && !inspectUi.IsInspectOn) return;
+        if (!inspectUi.IsInspectOn && !inventoryUI.HasItemSelected) return;
 
         var pos = Mouse.Position;
         var ray = Scene.Camera.ScreenPixelToRay(pos.WithX(pos.x));
@@ -60,13 +61,12 @@ public sealed partial class Player : Component
                 inspectUi.SlotHovering = slot;
                 inspectUi.IsHovering = true;
 
-                if (Input.Pressed("attack1") && shopUI.HasItemSelected)
+                if (Input.Pressed("attack1") && inventoryUI.HasItemSelected)
                 {
                     if (slot.IsOccupied) return;
-
-                    Gold -= shopUI.ItemSelected.Cost;
-                    shopUI.HasItemSelected = false;
-                    plot.PlantSlot(slotId, shopUI.ItemSelected, shopUI.CategorySelectedType);
+                    inventoryUI.HasItemSelected = false;
+                    plot.PlantSlot(slotId, inventoryUI.ItemSelected.Seed, CategoryTypes.Seeds);
+                    OnUseItem(inventoryUI.ItemSelected.Seed.SeedId);
                 }
             }
         }
@@ -75,7 +75,7 @@ public sealed partial class Player : Component
             inspectUi.IsHovering = false;
             if (Input.Pressed("attack1"))
             {
-                shopUI.HasItemSelected = false;
+                // inventoryUi.HasItemSelected = false;
             }
         }
     }
