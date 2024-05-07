@@ -54,11 +54,6 @@
         base.OnAwake();
         playerUI = Components.Get<PlayerUI>();
         player = Scene.Components.GetAll<Player>().FirstOrDefault();
-        player.OnInventoryChanged += OnInventoryChanged;
-    }
-
-    private void OnInventoryChanged()
-    {
     }
 
     private void OnItemClicked(int i)
@@ -72,13 +67,12 @@
 
         ItemSelectedId = i;
         HasItemSelected = true;
-
-        Log.Info(HasItemSelected);
     }
 
 
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(HasItemSelected, ItemSelectedId, playerUI.TabSelected, player.Seeds);
+    // protected override int BuildHash() => System.HashCode.Combine(HasItemSelected, ItemSelectedId, playerUI.TabSelected, player.Seeds);
+    protected override int BuildHash() => System.HashCode.Combine(new Time());
 }
