@@ -58,7 +58,7 @@
 
     private void OnItemClicked(int i)
     {
-        if (ItemSelected.Amount < 1) return;
+        if (Seeds[i].Amount < 1) return;
         if (HasItemSelected && ItemSelectedId == i)
         {
             HasItemSelected = false;
