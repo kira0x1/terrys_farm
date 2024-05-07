@@ -24,6 +24,12 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="field">
+                @($"Bloom: {SlotHovering.TickCount} / {Item.BloomTicks}")
+            </div>
+        </div>
+
         @if (Item.Yield.Length > 0)
         {
             @foreach (YieldData yield in Item.Yield)

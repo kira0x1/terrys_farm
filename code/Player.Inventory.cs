@@ -11,8 +11,6 @@ public sealed partial class Player : Component
     {
         if (category != CategoryTypes.Seeds) return;
 
-        Gold -= item.Cost;
-
         if (Seeds.TryGetValue(item.SeedId, out InventoryItem seed))
         {
             seed.Amount += amount;

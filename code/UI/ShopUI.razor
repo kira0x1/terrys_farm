@@ -88,8 +88,10 @@
 
     private void OnItemClicked(int i)
     {
-        if (player.Gold >= CategorySelected.Items[i].Cost)
+        var cost = CategorySelected.Items[i].Cost;
+        if (player.Gold >= cost)
         {
+            player.RemoveGold(cost);
             player.AddToInventory(CategorySelected.Items[i], CategorySelectedType);
         }
     }

@@ -11,7 +11,7 @@
           "seedId": 0,
           "cost": 1,
           "tickRate": 1,
-          "bloomTicks": 3,
+          "bloomTicks": 5,
           "yield": [
             {
               "yieldType": "seed",
@@ -33,7 +33,22 @@
           "name": "tree",
           "seedId": 1,
           "icon": "forest",
-          "cost": 10
+          "cost": 10,
+          "tickRate": 1,
+          "bloomTicks": 1,
+          "yield": [
+            {
+              "yieldType": "seed",
+              "isRandom": true,
+              "minAmount": 0,
+              "maxAmount": 1,
+              "amount": 0
+            },
+            {
+              "yieldType": "gold",
+              "amount": 1
+            }
+          ]
         }
       ]
     },

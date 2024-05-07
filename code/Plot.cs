@@ -75,14 +75,11 @@ public sealed class Plot : Component
     private void OnHarvest(CategoryItem item)
     {
         // calculate yields
-
-        // Log.Info($"on harvest: {item.Name}");
         YieldData[] yieldData = item.Yield;
 
         foreach (YieldData yield in yieldData)
         {
             int amount = yield.IsRandom ? Random.Shared.Int(yield.MinAmount, yield.MaxAmount) : yield.Amount;
-            // Log.Info($"yield: {yield.YieldType}, amount: {amount}");
 
             if (yield.YieldType == "seed")
             {

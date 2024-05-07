@@ -56,14 +56,14 @@ public class PlotSlot
 
         if (!IsOccupied) return;
 
-        if (TimeSinceTick > Item.TickRate)
+        if (TimeSinceTick > Item.TickRate && TickCount < Item.BloomTicks)
         {
             TickCount++;
             TimeSinceTick = 0f;
         }
 
         // On Bloom
-        if (!HasBloomed && TickCount > Item.BloomTicks)
+        if (!HasBloomed && TickCount >= Item.BloomTicks)
         {
             OnBloom();
         }
@@ -72,9 +72,6 @@ public class PlotSlot
         {
             Gizmo.Draw.Text("Bloomed!!", new Transform(position));
         }
-
-
-        HasBloomed = TickCount > Item.BloomTicks;
 
         if (HasBloomed && harvestTime > harvestDelay)
         {
@@ -86,6 +83,7 @@ public class PlotSlot
     {
         BloomTextTime = 0;
         harvestTime = 0;
+        HasBloomed = true;
     }
 
     private void Harvest()

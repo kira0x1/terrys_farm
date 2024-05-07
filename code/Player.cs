@@ -31,6 +31,12 @@ public sealed partial class Player : Component
         Gold += amount;
     }
 
+    // doing this for a reason trust
+    public void RemoveGold(int amount)
+    {
+        Gold -= amount;
+    }
+
     protected override void OnUpdate()
     {
         if (inspectUi == null) return;

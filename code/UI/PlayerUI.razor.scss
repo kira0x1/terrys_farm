@@ -123,7 +123,7 @@ PlayerUI {
     align-items: center;
 
     .resource {
-      width: 80px;
+      width: 120px;
       height: 100%;
       border-radius: 3px;
       background-color: #666;
@@ -138,9 +138,9 @@ PlayerUI {
       }
 
       .resource-text {
-        width: 40%;
+        width: 60%;
         justify-content: flex-end;
-        font-size: 20px;
+        font-size: 25px;
       }
     }
   }

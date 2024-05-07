@@ -47,7 +47,7 @@
     private int ItemSelectedId { get; set; } = 0;
 
     private List<InventoryItem> Seeds => player.Seeds.Values.ToList();
-    public InventoryItem ItemSelected => player.Seeds[ItemSelectedId];
+    public InventoryItem ItemSelected => Seeds[ItemSelectedId];
 
     protected override void OnAwake()
     {
@@ -74,5 +74,5 @@
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
     // protected override int BuildHash() => System.HashCode.Combine(HasItemSelected, ItemSelectedId, playerUI.TabSelected, player.Seeds);
-    protected override int BuildHash() => System.HashCode.Combine(new Time());
+    protected override int BuildHash() => System.HashCode.Combine(Time.Now);
 }
