@@ -54,6 +54,11 @@
         base.OnAwake();
         playerUI = Components.Get<PlayerUI>();
         player = Scene.Components.GetAll<Player>().FirstOrDefault();
+        player.OnInventoryChanged += OnInventoryChanged;
+    }
+
+    private void OnInventoryChanged()
+    {
     }
 
     private void OnItemClicked(int i)

@@ -36,7 +36,7 @@
 
                 CategoryItem item = categorySelected.Items[i];
 
-                if (item.Cost > player.Gold)
+                if (item.Cost > Gold)
                 {
                     cname = "slot disabled";
                 }
@@ -60,6 +60,7 @@
     private Player player;
     private PlayerUI playerUI;
 
+    private int Gold => player.Gold;
 
     public CategoryData[] Categories;
     public CategoryTypes CategorySelectedType { get; set; } = CategoryTypes.Seeds;
@@ -97,5 +98,5 @@
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(CategorySelectedType, player.Gold, playerUI.TabSelected);
+    protected override int BuildHash() => System.HashCode.Combine(CategorySelectedType, Gold, playerUI.TabSelected);
 }

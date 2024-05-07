@@ -14,7 +14,7 @@
           "bloomTicks": 3,
           "yield": [
             {
-              "yieldType": "grass_seed",
+              "yieldType": "seed",
               "isRandom": true,
               "minAmount": 0,
               "maxAmount": 4,
@@ -22,10 +22,10 @@
             },
             {
               "isRandom": false,
-              "yieldType": "coin",
+              "yieldType": "gold",
               "minAmount": 0,
               "maxAmount": 0,
-              "amount": 1
+              "amount": 3
             }
           ]
         },

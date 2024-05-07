@@ -8,8 +8,6 @@ public sealed partial class Player : Component
 
     private static DataJson _gameData { get; set; }
     public static DataJson GameData => _gameData;
-
-    [Property]
     public int Gold { get; set; } = 20;
 
     private InspectUI inspectUi;
@@ -27,6 +25,11 @@ public sealed partial class Player : Component
 
         inspectUi = Scene.Components.GetAll<InspectUI>().First();
         inventoryUI = Scene.Components.GetAll<InventoryUI>().First();
+    }
+
+    public void AddGold(int amount)
+    {
+        Gold += amount;
     }
 
     protected override void OnUpdate()

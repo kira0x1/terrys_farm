@@ -7,7 +7,7 @@
     <div class="resources-container">
         <div class="resource">
             <i>hub</i>
-            <div class="resource-text">@player.Gold</div>
+            <div class="resource-text">@Gold</div>
         </div>
     </div>
 
@@ -58,6 +58,8 @@
     private ToolData[] Tools { get; set; }
     private Player player { get; set; }
     private InspectUI inspectUi { get; set; }
+    private int Gold => player.Gold;
+
 
     public enum TabTypes
     {
@@ -85,7 +87,7 @@
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine(ToolSelected, HasToolSelected, player.Gold, TabSelected);
+    protected override int BuildHash() => System.HashCode.Combine(ToolSelected, HasToolSelected, Gold, TabSelected);
 
     private void OnToolClicked(int i)
     {

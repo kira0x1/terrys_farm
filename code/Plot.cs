@@ -1,5 +1,6 @@
 namespace Kira;
 
+using System;
 using Sandbox.UI;
 
 public sealed class Plot : Component
@@ -13,6 +14,7 @@ public sealed class Plot : Component
     private const float scale = 30f;
     private const float offset = 1.1f;
 
+    private Player player;
     private DevUI devUi;
 
     public Dictionary<Vector2Int, PlotSlot> Slots = new Dictionary<Vector2Int, PlotSlot>();
@@ -21,6 +23,7 @@ public sealed class Plot : Component
     {
         base.OnStart();
 
+        player = Scene.Components.GetAll<Player>().FirstOrDefault();
         Slots = new Dictionary<Vector2Int, PlotSlot>();
         devUi = Scene.Components.GetAll<DevUI>().FirstOrDefault();
         CreatePlots();
@@ -69,6 +72,30 @@ public sealed class Plot : Component
         slot.PlaceItem(item, category);
     }
 
+    private void OnHarvest(CategoryItem item)
+    {
+        // calculate yields
+
+        // Log.Info($"on harvest: {item.Name}");
+        YieldData[] yieldData = item.Yield;
+
+        foreach (YieldData yield in yieldData)
+        {
+            int amount = yield.IsRandom ? Random.Shared.Int(yield.MinAmount, yield.MaxAmount) : yield.Amount;
+            // Log.Info($"yield: {yield.YieldType}, amount: {amount}");
+
+            if (yield.YieldType == "seed")
+            {
+                player.AddToInventory(item, CategoryTypes.Seeds, amount);
+            }
+
+            if (yield.YieldType == "gold")
+            {
+                player.AddGold(amount);
+            }
+        }
+    }
+
     private void CreatePlots()
     {
         for (int y = 0; y < PlotY; y++)
@@ -87,6 +114,7 @@ public sealed class Plot : Component
 
                 PlotSlot slot = new PlotSlot(xSlot, ySlot, pos);
                 Slots.Add(new Vector2Int(xSlot, ySlot), slot);
+                slot.OnHarvest += OnHarvest;
             }
         }
     }

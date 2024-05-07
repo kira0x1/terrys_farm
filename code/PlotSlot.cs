@@ -1,5 +1,7 @@
 ﻿namespace Kira;
 
+using System;
+
 public class PlotSlot
 {
     public bool IsOccupied { get; set; }
@@ -23,6 +25,8 @@ public class PlotSlot
 
     private const float harvestDelay = 4f;
     private TimeSince harvestTime = 0;
+
+    public Action<CategoryItem> OnHarvest;
 
 
     public PlotSlot(int x, int y, Vector3 position = new Vector3())
@@ -93,5 +97,7 @@ public class PlotSlot
 
         BloomTextTime = 10;
         harvestTime = 10;
+
+        OnHarvest?.Invoke(Item);
     }
 }
